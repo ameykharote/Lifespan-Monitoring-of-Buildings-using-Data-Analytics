@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+<style>
+		#chart{
+  position:relative;
+  margin-top:40px;
+  width:500px;
+  height:200px;
+}
+@-webkit-keyframes bargrowth{
+  0%   {max-height: 0%;}
+  
+  100%  {max-height: 100%;}
+}
+@keyframes bargrowth{
+  0%    {max-height: 0%;}
+  50%    {max-height: 50%;}
+  100%  {max-height: 100%;}
+}
+.bar{
+   
+  -webkit-animation: bargrowth 1000ms ease;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3;
+  animation: bargrowth 2000ms ease;
+  position:absolute;
+  bottom:0;
+  display:inline-block;
+  background: #89b800;
+  box-shadow: 1px -1px #79a300, 2px -2px #79a300, 3px -3px #79a300,   4px -4px #79a300, 5px -5px #79a300, 6px -6px #79a300, 7px -7px   #79a300, 8px -8px #79a300, 9px -9px #79a300, 10px -10px #79a300;
+}
+
+
+.wrapper{
+  text-align:center;
+  margin:0 auto;
+  margin-top:30px;
+  width:500px;
+  font-family:Helvetica;
+  font-size:20px;
+}
+.wrapper > h1, .wrapper > p{
+  margin:0;
+}
+body{background-color:#42f4b6;}
+</style>
+	</head>
+	<body>
+
+		
+
+					
+		
+			
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+<div class="wrapper">
+  <h1>MIG(Middle Income Group) Colony</h1>
+  <p>Building no 41</p>
+  <div id="chart"></div>  
+</div>
+
+		<script>
+			// Add values to the values array and see what happens :)
+var values = [50,100,150,200,250,300,350,400,600,800,1000];
+
+drawChart(values,"#chart",20) // You can adjust the margin between each bar by changing 10 to whatever you like
+
+ function drawChart(data,selector,padding){
+  var max = Math.max.apply(Math, data);
+	var chart = document.querySelector(selector);
+	var barwidth = ((chart.offsetWidth-(values.length-1)*padding-(data.length)*10)/data.length);
+	var sum = data.reduce(function(pv, cv) { return pv + cv; }, 0);
+	var left = 0;
+	for (var i in data){
+	  var newbar = document.createElement('div');
+	  newbar.setAttribute("class", "bar");
+	  newbar.style.width=barwidth+"px";
+	  newbar.style.height=((data[i]/max)*100)+"%";
+	  newbar.style.left=left+"px";
+	  chart.appendChild(newbar);
+	  left += (barwidth+padding+10);
+	}
+}
+			</script>
+			
+			<button onclick="window.location.href='./index.html'">Back</button>
+			</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
