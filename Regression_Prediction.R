@@ -38,7 +38,6 @@ head(Finalprediction)
 FinalPredictedTest <- data.frame(Finalprediction)
 
 Finalprediction1 <- predict(results, Train_Pred)
-
 head(Finalprediction1)
 
 FinalPredictedTrain <- data.frame(Finalprediction1)
